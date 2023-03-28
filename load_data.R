@@ -1,4 +1,0 @@
-load_data <- function(){
-
-
-}

@@ -14,18 +14,19 @@
 #' @export
 #'
 #' @examples
-get_depends <- function(task, depends_list, task_df, from = "key", to = "adam"){
-
+get_depends <- function(task, depends_list, task_df, from = "key", to = "adam") {
   file_temp <- depends_list[[task]]
 
-  if(is.null(file_temp)){
+  if (is.null(file_temp)) {
     message("no adam datasets are required for this task.")
     return()
   }
 
   files_to_copy <- task_df %>%
     filter(task_df$tasks %in% file_temp) %>%
-    select(outcomes) %>% as_vector() %>% tolower()
+    select(outcomes) %>%
+    as_vector() %>%
+    tolower()
 
 
   path_from <- file.path(from, files_to_copy)
@@ -34,5 +35,4 @@ get_depends <- function(task, depends_list, task_df, from = "key", to = "adam"){
 
   message(paste(task, " depends on ", paste(file_temp, collapse = " & "), ". The(se) file(s) was/were added to the ", to, " folder.", sep = ""))
   return()
-
 }
