@@ -244,7 +244,7 @@ server <- function(input, output, session) {
     output <- tagList()
 
     firstsecondthird <- c("First", "Second", "Third", "Fourth", "Fifth")
-    for (i in seq_along(1:N)) {
+    for (i in 1:N) {
       output[[i]] <- tagList()
       output[[i]] <- fluidRow(
         shiny::h4(paste(firstsecondthird[i], " Member")),
